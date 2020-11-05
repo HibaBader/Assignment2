@@ -2,10 +2,12 @@ package edu.cs.birzeit.bmicalculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -15,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText weight;
     private EditText name;
     private Spinner gender;
+    private Button btnTimer;
+
     public static final String NAME="NAME";
     public static final String HEIGHT="HEIGHT";
     public static final String WEIGHT="WEIGHT";
@@ -36,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         weight=findViewById(R.id.editTextWeight);
         name=findViewById(R.id.editTextName);
         gender=findViewById(R.id.spinnerGender);
+        btnTimer=findViewById(R.id.btnTimer);
     }
 
     public void btnSaveOnClick(View view){
@@ -64,6 +69,13 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+    }
+    public void btnTimerOnClick(View view){
+        openActivity2();
+    }
+    public void openActivity2(){
+        Intent intent = new Intent(this,Activity2.class);
+        startActivity(intent);
     }
     private void setupSharedPrefs(){
         prefs= PreferenceManager.getDefaultSharedPreferences(this);
